@@ -1,0 +1,23 @@
+{
+"email": "t7@t.com",
+"userCourseLog": {
+"courseId": "238", 
+"courseBucket": "1", 
+"courseDuration": "12",
+"startTime": "1424121909110",
+"btId": "2",
+"courseBucket": "1",
+"courseDuration": "12",
+"courseId": "238",
+"endTime": "1424122629110",
+"exhaleTime": "1",
+"inhaleTime": "0",
+"ipAddress": "::1",
+"loginDateTime": "11",
+"logoutDateTime": "11",
+"otherTIme": "11",
+"retentionTime": "1",
+"score": "1",
+"startTime": "1424121909110"
+}
+}

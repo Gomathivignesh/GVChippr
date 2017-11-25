@@ -1,0 +1,167 @@
+
+api 1
+http://54.68.157.185:8080/healthcare/rest/user/signup
+{ "email" : "u8@y.com",
+  "fName" : "Umamaheswaran",
+  "gender" : "Male",
+  "inpDob" : "08-Jun-1975",
+  "lName" : "TG",
+  "mName" : "",
+  "pwd" : "mypassword",
+  "score" : "10.05"
+}
+
+api 2
+http://54.68.157.185:8080/healthcare/rest/user/signin
+{ "email" : "madhu.mvgr@gmail.com",
+  "pwd" : "madhu123"
+}
+
+api 4
+http://54.68.157.185:8080/healthcare/rest/health/conditions
+
+
+
+api 5
+http://54.68.157.185:8080/healthcare/rest/user/update/condition
+{ 
+  "email" : "u7@y.com",
+  "userHealthCondition" : [ { "hcId" : "11",
+        "hcStatus" : "gd",
+        "hcValue" : "275"
+      },
+      { "hcId" : "22",
+        "hcStatus" : "gd",
+        "hcValue" : "178"
+      }
+    ]
+}
+
+api 6
+http://54.68.157.185:8080/healthcare/rest/user/update/metrics
+{ "cycle" : "20",
+  "email" : "u7@y.com",
+  "ratio" : "1:2:3"
+}
+
+api 7
+http://54.68.157.185:8080/healthcare/rest/user/courses/u7@y.com
+
+api 8
+http://54.68.157.185:8080/healthcare/rest/user/add/course/log
+{ 
+"email" : "u7@y.com",
+  "userCourseLog" : { 
+      "courseBucket" : "Evening",
+      "courseDuration" : "60",
+      "courseEndTime" : "08-Dec-1975",
+      "courseId" : "11",
+      "courseStartTime" : "08-Dec-1975",
+      "exhaleTime" : "15",
+      "inhaleTime" : "10",
+      "ipAddress" : "127:0:0:1",
+      "loginDateTime" : "08-Dec-1975",
+      "logoutDateTime" : "08-Dec-1975",
+      "otherTime" : "11",
+      "retentionTime" : "2",
+      "score" : "23"
+    }
+}
+
+api 9
+http://54.68.157.185:8080/healthcare/rest/user/add/course/review
+{ 
+"courseReview" : 
+    { 
+      "courseId" : "11",
+      "feedback" : "good",
+      "ratings" : "5"
+    },
+    "email" : "u8@y.com"
+}
+
+api 10
+http://54.68.157.185:8080/healthcare/rest/user/course/description/7
+
+api 11
+http://54.68.157.185:8080/healthcare/rest/user/eligibility/u7@y.com
+
+api 12
+http://54.68.157.185:8080/healthcare/rest/user/update/profile
+{ "email" : "u8@y.com",
+  "gender" : "Male",
+  "inpDob" : "08-Dec-1975",
+  "pwd" : "mypassword1"
+}
+
+api 14
+http://54.68.157.185:8080/healthcare/rest/user/changepwd
+{ "email" : "u8@y.com",
+  "newPwd" : "mypassword1",
+  "pwd" : "mypassword"
+}
+
+
+
+
+NEW APIS
+========
+
+
+1) GET ALL PLANS: 
+http://52.66.119.84:8080/healthcare/rest/user/getAllPlans
+
+2) GET CATEGORIES: 
+http://52.66.119.84:8080/healthcare/rest/user/getAllPlanCategories/{catId}
+
+3) GET PLAN STRUCTURE: 
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/getPlanStructure/{planId}
+
+4) START WORK OUT
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/startWorkOut/
+
+POST request and content-type is application/json
+{
+"userId":"1",
+"planId":"1",
+"fitnessLevel":"1",
+"flexiblityType":"1",
+"bodyFocus":"1",
+"equipment":"1",
+"prenatal":"0",
+"isPickAplan":"1",
+"strengthnings":"4"
+
+}
+
+5) GET CURRENT WORK OUT
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/getCurrentWorkOut/{userId}
+
+6) UPDATE VIDEO DURATION
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/updateVideoDuration
+
+POST request and content-type is application/json
+{
+"userId":"1",
+"videoList":[{"workOutId":"385","duration_time":"20:20"},{"workOutId":"386","duration_time":"30:30"}]
+}
+
+
+7) GET ALL WEEK DETAILS OF THE USER (ADDED USER SCORE)
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/getWeekGoalAndWatchTime/{userId}
+
+8) GET PARTICULAR WEEK DETAILS OF THE USER
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/getWeekWatchedMinutesDetails/{userId}/{weekNumber}
+
+9) Get videos based on the criteria. 
+http://ec2-52-66-119-84.ap-south-1.compute.amazonaws.com:8080/healthcare/rest/user/getVideosByCriteria
+POST REQUEST
+{
+"fitnessLevel":"1",
+"flexiblityType":"45",
+"bodyFocus":"1",
+"equipment":"1",
+"prenatal":"0",
+"isPickAplan":"0",
+"strengthnings":"4"
+} 
