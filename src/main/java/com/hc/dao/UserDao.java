@@ -2663,7 +2663,7 @@ public class UserDao {
 					"                    cf.trainer_name trainerName" +
 					"                    FROM ebdb.content_feed cf left join bodyFocus bf on cf.bodyFocusId = bf.id where cf.feed_type='VIDEO'";
 			if(searchText != null){
-				query += " and cf.title like '%" + searchText + "%'";
+				query += " and cf.Tags like '%" + searchText + "%'";
 			}
 			query += " limit 50";
 
