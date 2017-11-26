@@ -46,38 +46,20 @@ import com.hc.vo.ContentFeedCommentVO;
 @Scope("request")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserInfoImpl implements UserInfo {
+
 	private static final Logger log = Logger.getLogger(UserInfoImpl.class);
 	private UserDao userDao;
 	private ResourceBundle rb = ResourceBundle.getBundle("message");
 	private Util util;
 	private static Random rand = new Random();
 
-	/**
-	 * rt Takes input as JSON
-	 * 
-	 * {"email":"u8@y.com","pwd":"mypassword","fName":"Umamaheswaran"
-	 * ,"mName":"",
-	 * "lName":"TG","inpDob":"08-Jun-1975","gender":"Male","score":"10.05"}
-	 * 
-	 * @param user
-	 * 
-	 */
+
 
 	@POST
 	@Path("signup")
 	public Response addUser(@RequestBody User user) {
 		Response response = new Response();
 		log.info("In addUser method ");
-		//if (!"0".equals(referralId)) {
-		//	boolean isValid = userDao.isGiftTokenValid(referralId) > 0;
-			//if (!isValid) {
-				//Status status = new Status(true, "Invalid Gift token",
-				//		StatusCodes.INTERNAL_ERROR.code);
-				//status.setSuccess(false);
-			//	response.setStatus(status);
-			//	return response;
-			//}
-		//}
 		int returnVal = 0;
 		try {
 			returnVal = userDao.addUser(user);
@@ -108,12 +90,7 @@ public class UserInfoImpl implements UserInfo {
 		return response;
 	}
 
-	/**
-	 * Takes email id & password {"email":"u8@y.com","pwd":"mypassword"}
-	 * 
-	 * @param user
-	 * @return
-	 */
+
 	@POST
 	@Path("signin")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -157,15 +134,7 @@ public class UserInfoImpl implements UserInfo {
 		return response;
 	}
 
-	/**
-	 * 
-	 * {"email":"u8@y.com","pwd":"mypassword", "newPwd": "mypassword1"}
-	 * 
-	 * @param user
-	 * @return
-	 * @throws DataAccessException
-	 * @throws ParseException
-	 */
+
 	@POST
 	@Path("changepwd")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -188,10 +157,7 @@ public class UserInfoImpl implements UserInfo {
 		return response;
 	}
 
-	/**
-	 * @param user
-	 * @return
-	 */
+
 	@POST
 	@Path("update/profile")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -228,12 +194,6 @@ public class UserInfoImpl implements UserInfo {
 		return response;
 	}
 
-	/**
-	 * @param user
-	 * @return
-	 * @throws ParseException
-	 * @throws DataAccessException
-	 */
 	@POST
 	@Path("forgetPwd")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -1994,14 +1954,9 @@ public class UserInfoImpl implements UserInfo {
 		Response response = new Response();
 		log.info("In Start work out method ");
 		try {
-			// 0. SELECT * FROM ebdb.weekly_work_out; get the recent work out
-			// video id & week number of the user.
-			// int maxVideoNumber=0;
+
 			int weekNo = 0;
 			List<MaxVideoWeekNo> maxVideo = userDao.getMaxVideoAndWeekNo(Integer.parseInt(request.getUserId()));
-
-			// 1. SELECT the plan structure and get the videos based on the
-			// categories
 			List<PlanStructure> planStructs = userDao.getPlanStructure(Integer.parseInt(request.getPlanId()), Integer.parseInt(request.getFitnessLevel()));
 			Map<Integer, Integer> catMap = new HashMap<Integer, Integer>();
 			List<PlanDetails> catList = new ArrayList<PlanDetails>();
@@ -2022,10 +1977,7 @@ public class UserInfoImpl implements UserInfo {
 				}
 				if (p.getSecondCatId() != 0) {
 					if (catMap.get(p.getSecondCatId()) != null)
-						catMap.put(
-								p.getSecondCatId(),
-								catMap.get(p.getSecondCatId())
-										+ p.getSecondCatCount());
+						catMap.put(p.getSecondCatId(), catMap.get(p.getSecondCatId()) + p.getSecondCatCount());
 					else
 						catMap.put(p.getSecondCatId(), p.getSecondCatCount());
 					for (int i = 0; i < p.getSecondCatCount(); i++) {
@@ -2037,10 +1989,7 @@ public class UserInfoImpl implements UserInfo {
 				}
 				if (p.getThirdCatId() != 0) {
 					if (catMap.get(p.getThirdCatId()) != null)
-						catMap.put(
-								p.getThirdCatId(),
-								catMap.get(p.getThirdCatId())
-										+ p.getThirdCatCount());
+						catMap.put(p.getThirdCatId(), catMap.get(p.getThirdCatId()) + p.getThirdCatCount());
 					else
 						catMap.put(p.getThirdCatId(), p.getThirdCatCount());
 					for (int i = 0; i < p.getThirdCatCount(); i++) {
@@ -2068,8 +2017,7 @@ public class UserInfoImpl implements UserInfo {
 			Map<Integer, Integer> videoByCatMap = new HashMap<Integer, Integer>();
 			if (maxVideo != null && maxVideo.size() > 0) {
 				for (MaxVideoWeekNo videoByCat : maxVideo) {
-					videoByCatMap.put(videoByCat.getCatId(),
-							videoByCat.getMaxVideoNo());
+					videoByCatMap.put(videoByCat.getCatId(), videoByCat.getMaxVideoNo());
 				}
 				weekNo = maxVideo.get(0).getWeekNo();
 			}
@@ -2098,8 +2046,7 @@ public class UserInfoImpl implements UserInfo {
 
 			// Update the previous work out done.
 			if (videoList.size() > 0) {
-				userDao.setDoneToCurrentWorkOut(
-						Integer.parseInt(request.getUserId()), weekNo);
+				userDao.setDoneToCurrentWorkOut(Integer.parseInt(request.getUserId()), weekNo);
 			}
 			// 3. Insert video details into
 			for (VideoResObj video : videoList) {
