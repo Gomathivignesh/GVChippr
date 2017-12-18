@@ -1777,7 +1777,7 @@ public class UserDao {
 			parameters1.addValue("count", count);
 
 			videos = namedParameterJdbcTemplate
-					.query("SELECT * from content_feed c join  instructor i on i.id=c.instructorId and c.levelId in (:fit) and c.catId in (:cats) and c.bodyFocusId=:body and c.equipmentId=:equip and c.prenatal=:pre and c.pickAplan=:pick and c.content_feed_id > :maxVideo and c.enable=1 order by c.content_feed_id limit :count",
+					.query("SELECT * from content_feed c join  instructor i on i.id=c.instructorId and c.levelId in (:fit) and c.catId in (:cats) and c.bodyFocusId=:body and c.equipmentId=:equip and c.prenatal=:pre and c.pickAplan=:pick and c.enable=1 order by c.content_feed_id limit :count",
 							parameters1, new VideoMapper("" + cat));
 		}
 		return videos;
