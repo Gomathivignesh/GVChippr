@@ -1,0 +1,57 @@
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+--
+-- Host: 34.211.81.224    Database: ebdb
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `giftpurchaseinfohistory`
+--
+
+DROP TABLE IF EXISTS `giftpurchaseinfohistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `giftpurchaseinfohistory` (
+  `id` int(11) NOT NULL,
+  `annualSubscription` int(11) DEFAULT NULL,
+  `noOfOrders` int(11) DEFAULT NULL,
+  `giftSubscription` int(11) DEFAULT NULL,
+  `bonusSubscription` int(11) DEFAULT NULL,
+  `amountDue` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `lastupdated` datetime DEFAULT NULL,
+  `transactionId` varchar(45) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `giftpurchaseinfohistory`
+--
+
+LOCK TABLES `giftpurchaseinfohistory` WRITE;
+/*!40000 ALTER TABLE `giftpurchaseinfohistory` DISABLE KEYS */;
+INSERT INTO `giftpurchaseinfohistory` VALUES (1,10,0,0,0,10,'2014-06-17 03:48:50','2014-06-17 03:48:50','2215000040'),(1,0,7,70,10,60,'2014-06-17 03:50:00','2014-06-17 03:50:00','2215000054'),(7,10,0,0,0,10,'2015-01-19 05:24:17','2015-01-19 05:24:17','t12389'),(101,10,0,0,0,10,'2015-01-19 05:29:36','2015-01-19 05:29:36','t12389'),(102,10,0,0,0,10,'2015-01-19 06:20:53','2015-01-19 06:20:53','t12389'),(103,10,0,0,0,10,'2015-01-21 12:37:47','2015-01-21 12:37:47','t12389'),(103,0,1,10,0,10,'2015-01-21 12:38:24','2015-01-21 12:38:24','t12389'),(133,10,0,0,0,10,'2015-02-20 05:42:42','2015-02-20 05:42:42','t12389'),(158,10,0,0,0,10,'2015-03-13 14:21:44','2015-03-13 14:21:44','t12389'),(176,10,0,0,0,10,'2015-04-03 00:24:33','2015-04-03 00:24:33','t12389'),(232,10,0,0,0,10,'2015-08-12 15:17:50','2015-08-12 15:17:50','t12389'),(232,0,1,10,0,10,'2015-08-12 15:19:18','2015-08-12 15:19:18','t12389'),(232,0,1,10,0,10,'2015-08-12 15:23:46','2015-08-12 15:23:46','t12389'),(232,0,1,10,0,10,'2015-08-16 17:50:05','2015-08-16 17:50:05','t12389');
+/*!40000 ALTER TABLE `giftpurchaseinfohistory` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-05-11 12:28:12
